@@ -17,6 +17,8 @@ export class TodoService {
   
   todosLimit = '?_limit=5';
 
+  _id: number = 200;
+
   constructor(private http: HttpClient) { }
 
   // Get Todos
@@ -32,6 +34,7 @@ export class TodoService {
 
   // Add Todo
   addTodo(todo: Todo): Observable<Todo> {
+    this._id = todo.id;
     return this.http.post<Todo>(this.todosUrl, todo, httpOptions);
   }
 
